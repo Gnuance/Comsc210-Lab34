@@ -15,10 +15,10 @@ public:
     vector<vector<Pair>> adjList;
 
     // Graph Constructor
-    Graph(vector<Edge> const &edges)
+    Graph(vector<Edge> const &edges, int Size)
     {
-        // resize the vector to hold SIZE elements of type vector<Edge>
-        adjList.resize(SIZE);
+        // resize the vector to hold Size elements of type vector<Edge>
+        adjList.resize(Size);
 
         // add edges to the directed graph
         for (auto &edge : edges)

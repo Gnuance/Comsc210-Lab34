@@ -25,7 +25,7 @@ int main()
         {2, 5, 5}};
 
     // Creates graph
-    Graph graph(edges);
+    Graph graph(edges, 7);
 
     // Prints adjacency list representation of graph
     graph.printGraph();
