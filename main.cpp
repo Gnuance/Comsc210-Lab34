@@ -34,11 +34,11 @@ int main()
     // BFS and DFS starting from beginning node
     int startingNode = 0;
     // Breadth first search from node 0
-    cout << "BFS from node: " << startingNode << " --> ";
-    graph.BFS(0);
-    // Breadth first search from node 0
-    cout << "DFS from node: " << startingNode << " --> ";
+    cout << "DFS starting from node " << startingNode << ":" << endl;
     graph.DFS(0);
+    // Breadth first search from node 0
+    cout << "BFS starting from node " << startingNode << ":" << endl;
+    graph.BFS(0);
 
     return 0;
 }
