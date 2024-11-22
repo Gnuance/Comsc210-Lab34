@@ -8,6 +8,7 @@ class Edge
 {
 public:
     int src, dest, weight;
+    Edge(int s, int d, int w) : src(s), dest(d), weight(w) {}
 };
 
 // Function to get largest vertex within a container of edge
