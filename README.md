@@ -21,3 +21,5 @@
 
 ## Design Decisions
     + Moving graph into it's own class file to clean up main and improve readability.
+    + Also moved Edge into its own with a new function to calculate the number of vertices
+        - I didn't like the hardcoded size in the call to Graph() in case the program ever needs to be implemented dynamically because the number of vertices is simply the unique number of src & dest items.

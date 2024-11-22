@@ -7,7 +7,7 @@
 #include "NetworkGraph.h"
 using namespace std;
 
-const int SIZE = 7;
+// const int SIZE = 7;
 
 int main()
 {
@@ -25,7 +25,7 @@ int main()
         {2, 5, 5}};
 
     // Creates graph
-    Graph graph(edges, 7);
+    Graph graph(edges, GetNumVertices(edges));
 
     // Prints adjacency list representation of graph
     graph.printGraph();

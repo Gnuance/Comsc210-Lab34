@@ -1,7 +1,7 @@
 #ifndef EDGE_H
 #define EDGE_H
 
-#include <set>
+#include <unordered_set>
 using namespace std;
 
 class Edge
@@ -15,7 +15,7 @@ template <typename Container>
 int GetNumVertices(const Container &container)
 {
     // List of nodes connected by edges
-    set<int> nodes;
+    unordered_set<int> nodes;
 
     // Add all unique nodes to set
     for (const auto edge : container)
