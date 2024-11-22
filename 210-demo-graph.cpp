@@ -1,9 +1,10 @@
 /*
-    
+    Lab 34: Multi-step network graph project. Create and transform a network graph in various ways. See README.md          
 */
 
 #include <iostream>
 #include <vector>
+#include "NetworkGraph.h"
 using namespace std;
 
 const int SIZE = 7;
