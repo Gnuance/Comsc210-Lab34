@@ -8,8 +8,9 @@ class Edge
 public:
     int src, dest, weight;
 
-    template <typename Container>
-    static int getMaxVertex(const Container& c){
+    // Static function to get largest vertex within a container of edge
+    template <typename Container<Edge>>
+    static int getMaxVertex(const Container<Edge>& c){
 
     }
 };
