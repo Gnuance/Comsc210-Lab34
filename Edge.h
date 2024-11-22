@@ -24,6 +24,7 @@ int GetNumVertices(const Container &container)
         nodes.insert(edge.dest);
     }
 
+    // Return umber of vertices
     return nodes.size();
 }
 

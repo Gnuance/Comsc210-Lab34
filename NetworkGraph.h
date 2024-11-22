@@ -11,25 +11,25 @@ typedef pair<int, int> Pair; // Creates alias 'Pair' for the pair<int,int> data 
 class Graph
 {
 public:
-    // a vector of vectors of Pairs to represent an adjacency list
+    // A vector of vectors of Pairs to represent an adjacency list
     vector<vector<Pair>> adjList;
 
     // Graph Constructor
     Graph(vector<Edge> const &edges, int numVertices)
     {
-        // resize the vector to hold Size elements of type vector<Edge>
+        // Resize the vector to hold Size elements of type vector<Edge>
         adjList.resize(numVertices);
 
-        // add edges to the directed graph
+        // Add edges to the directed graph
         for (auto &edge : edges)
         {
             int src = edge.src;
             int dest = edge.dest;
             int weight = edge.weight;
 
-            // insert at the end
+            // Insert at the end
             adjList[src].push_back(make_pair(dest, weight));
-            // for an undirected graph, add an edge from dest to src also
+            // For an undirected graph, add an edge from dest to src also
             adjList[dest].push_back(make_pair(src, weight));
         }
     }
