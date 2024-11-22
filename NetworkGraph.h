@@ -3,6 +3,8 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
+#include <queue>
+#include <stack>
 #include "Edge.h"
 using namespace std;
 
@@ -45,6 +47,65 @@ public:
                 cout << "(" << v.first << ", " << v.second << ") ";
             cout << endl;
         }
+    }
+
+    // Breadth-First Search (BFS) -- Compliments of ChatGPT
+    void BFS(int start)
+    {
+        vector<bool> visited(adjList.size(), false);
+        queue<int> q;
+        q.push(start);
+        visited[start] = true;
+
+        while (!q.empty())
+        {
+            int node = q.front();
+            q.pop();
+            cout << node << " "; // Process node (print it)
+
+            // Visit all the neighbors
+            for (const auto &neighbor : adjList[node])
+            {
+                int neighborNode = neighbor.first;
+                if (!visited[neighborNode])
+                {
+                    visited[neighborNode] = true;
+                    q.push(neighborNode);
+                }
+            }
+        }
+        cout << endl;
+    }
+
+    // Depth-First Search (DFS) - Iterative version (using stack) -- Compliments of ChatGPT
+    void DFS(int start)
+    {
+        vector<bool> visited(adjList.size(), false);
+        stack<int> s;
+        s.push(start);
+
+        while (!s.empty())
+        {
+            int node = s.top();
+            s.pop();
+
+            if (!visited[node])
+            {
+                visited[node] = true;
+                cout << node << " "; // Process node (print it)
+
+                // Visit all the neighbors
+                for (const auto &neighbor : adjList[node])
+                {
+                    int neighborNode = neighbor.first;
+                    if (!visited[neighborNode])
+                    {
+                        s.push(neighborNode);
+                    }
+                }
+            }
+        }
+        cout << endl;
     }
 };
 

@@ -30,8 +30,15 @@ int main()
     // Prints adjacency list representation of graph
     graph.printGraph();
 
-
-    // Depth first search
+    // STEP 1 -- See README.md
+    // BFS and DFS starting from beginning node
+    int startingNode = 0;
+    // Breadth first search from node 0
+    cout << "BFS from node: " << startingNode << " --> ";
+    graph.BFS(0);
+    // Breadth first search from node 0
+    cout << "DFS from node: " << startingNode << " --> ";
+    graph.DFS(0);
 
     return 0;
 }
