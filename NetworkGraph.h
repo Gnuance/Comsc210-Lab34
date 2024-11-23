@@ -11,7 +11,7 @@ using namespace std;
 
 typedef pair<int, int> Pair; // Creates alias 'Pair' for the pair<int,int> data type
 
-const string DIVIDER = string(40, '='); // Divider to separate graph content
+const string DIVIDER = string(50, '='); // Divider to separate graph content
 
 class Graph
 {
@@ -45,7 +45,7 @@ public:
     // Print the graph's adjacency list
     void printGraph()
     {
-        cout << "VPN Bandwidth:" << endl;
+        cout << "Current VPN Bandwidth:" << endl;
         cout << DIVIDER << endl;
         for (int i = 0; i < adjList.size(); i++)
         {
@@ -94,6 +94,10 @@ public:
         stack<int> s;
         s.push(start);
 
+        // Console output header
+        cout << "Network Discovery: Available Network Nodes" << endl;
+        cout << DIVIDER << endl;
+        int count = 0; // For output formatting
         while (!s.empty())
         {
             int node = s.top();
@@ -102,6 +106,11 @@ public:
             if (!visited[node])
             {
                 visited[node] = true;
+                if (count > 0)
+                {
+                    /* code */
+                }
+                
                 cout << node << " "; // Process node (print it)
 
                 // Visit all the neighbors
