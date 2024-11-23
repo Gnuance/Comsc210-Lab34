@@ -106,11 +106,8 @@ public:
             if (!visited[node])
             {
                 visited[node] = true;
-                if (count > 0) cout << " -- connected to --> ";
-                if (count % 4 == 0) cout << "\n";
                 
-                cout << nodeNames.at(node); // Process node (print it)
-                count++;
+                cout << "\nAvailable Nodes For: " << nodeNames.at(node); // Process node (print it)
 
                 // Visit all the neighbors
                 for (const auto &neighbor : adjList[node])
@@ -119,9 +116,12 @@ public:
                     if (!visited[neighborNode])
                     {
                         s.push(neighborNode);
+                        // Output formatted connections
+                        cout << "\n\t--> " << nodeNames.at(neighbor.first) << " (" << neighbor.second << "Mb/s)";
                     }
                 }
             }
+            cout << endl; // Spacing for each node loop
         }
         cout << endl;
     }
