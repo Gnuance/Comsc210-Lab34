@@ -2,6 +2,7 @@
 #define EDGE_H
 
 #include <unordered_set>
+#include <string>
 using namespace std;
 
 class Edge

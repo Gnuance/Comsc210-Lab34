@@ -27,3 +27,4 @@
 ## Completion Updates
     + Step 1 - Completed
     + Step 2 - Nodes 1 & 4 removed. Nodes 7-12 added and weights revised. Had to modify NetworkGraph.h::void printGraph() to check if !adjList[i].empty before printing.
+    + Step 3 - Modeling a VPN using a graph. DFS discovers available network nodes (Network Discovery) & BFS is used to determine most efficient pathfinding.
