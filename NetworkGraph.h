@@ -5,10 +5,13 @@
 #include <vector>
 #include <queue>
 #include <stack>
+#include <string>
 #include "Edge.h"
 using namespace std;
 
 typedef pair<int, int> Pair; // Creates alias 'Pair' for the pair<int,int> data type
+
+const string DIVIDER = string(40, '='); // Divider to separate graph content
 
 class Graph
 {
@@ -39,12 +42,13 @@ public:
     // Print the graph's adjacency list
     void printGraph()
     {
-        cout << "Graph's adjacency list:" << endl;
+        cout << "VPN Bandwidth:" << endl;
+        cout << DIVIDER << endl;
         for (int i = 0; i < adjList.size(); i++)
         {
             if (!adjList[i].empty())
             {
-                cout << i << " --> ";
+                cout << NODE_NAMES.at(i) << "\n";
                 for (Pair v : adjList[i])
                     cout << "(" << v.first << ", " << v.second << ") ";
                 cout << endl;
