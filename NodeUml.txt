@@ -1,0 +1,39 @@
+' Lab 34 - Plant UML
+@startuml
+left to right direction
+' skinparam linetype polyline
+' skinparam linetype ortho
+skinparam nodesep 50
+skinparam ranksep 100
+
+' Define the nodes (vertices)
+node 0
+node 2
+node 3
+node 5
+node 6
+node 7
+node 8
+node 9
+node 10
+node 11
+node 12
+
+' Define the edges with weights
+0 -- 2: 8
+0 -- 3: 21
+2 -- 3: 6
+2 -- 6: 15
+5 -- 6: 9
+2 -- 5: 11
+3 -- 7: 5
+0 -- 8: 9
+8 -- 6: 14
+5 -- 8: 12
+2 -- 10: 35
+7 -- 9: 8
+6 -- 10: 4
+9 -- 12: 6
+10 -- 12: 8
+6 -- 11: 3
+@enduml

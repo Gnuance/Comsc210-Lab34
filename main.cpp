@@ -14,6 +14,7 @@ int main()
     // Creates a vector of graph edges/weights
     vector<Edge> edges = {
         // (x, y, w) —> edge from x to y having weight w
+        // STEP 2 -- Nodes 1 & 4 removed -- See README
         {0, 1, 12},
         {0, 2, 8},
         {0, 3, 21},
@@ -30,7 +31,7 @@ int main()
     // Prints adjacency list representation of graph
     graph.printGraph();
 
-    // STEP 1 -- See README.md
+    // STEP 1 -- See README
     // BFS and DFS starting from beginning node
     int startingNode = 0;
     // Breadth first search from node 0
