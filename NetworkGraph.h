@@ -95,8 +95,8 @@ public:
         s.push(start);
 
         // Console output header
-        cout << "Network Discovery: Available Network Nodes" << endl;
-        cout << DIVIDER << endl;
+        cout << "\nNetwork Discovery: Proxy Trace\n";
+        cout << DIVIDER;
         int count = 0; // For output formatting
         while (!s.empty())
         {
@@ -107,7 +107,7 @@ public:
             {
                 visited[node] = true;
                 
-                cout << "\nAvailable Nodes For: " << nodeNames.at(node); // Process node (print it)
+                cout << "\nAvailable Proxies For: " << nodeNames.at(node); // Process node (print it)
 
                 // Visit all the neighbors
                 for (const auto &neighbor : adjList[node])
@@ -120,8 +120,8 @@ public:
                         cout << "\n\t--> " << nodeNames.at(neighbor.first) << " (" << neighbor.second << "Mb/s)";
                     }
                 }
+                cout << endl; // Spacing for each node loop
             }
-            cout << endl; // Spacing for each node loop
         }
         cout << endl;
     }
