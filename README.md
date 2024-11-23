@@ -26,4 +26,4 @@
 
 ## Completion Updates
     + Step 1 - Completed
-    + Step 2 - Nodes 1 & 4 removed. Nodes 7-12 added and weights revised.
+    + Step 2 - Nodes 1 & 4 removed. Nodes 7-12 added and weights revised. Had to modify NetworkGraph.h::void printGraph() to check if !adjList[i].empty before printing.
