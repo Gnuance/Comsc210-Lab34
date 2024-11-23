@@ -106,12 +106,11 @@ public:
             if (!visited[node])
             {
                 visited[node] = true;
-                if (count > 0)
-                {
-                    /* code */
-                }
+                if (count > 0) cout << " -- connected to --> ";
+                if (count % 4 == 0) cout << "\n";
                 
-                cout << node << " "; // Process node (print it)
+                cout << nodeNames.at(node); // Process node (print it)
+                count++;
 
                 // Visit all the neighbors
                 for (const auto &neighbor : adjList[node])
