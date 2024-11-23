@@ -17,7 +17,7 @@ public:
     vector<vector<Pair>> adjList;
 
     // Graph Constructor
-    Graph(vector<Edge> const &edges, int numEdges)
+    Graph(vector<Edge> const &edges, int numEdges, const map<int, string>& nodeNames)
     {
         // Resize the vector to hold Size elements of type vector<Edge>
         adjList.resize(numEdges);

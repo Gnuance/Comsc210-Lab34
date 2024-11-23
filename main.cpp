@@ -4,10 +4,14 @@
 
 #include <iostream>
 #include <vector>
+#include <map>
 #include "NetworkGraph.h"
 using namespace std;
 
-// const int SIZE = 7;
+// STEP 3 -- See Readme
+// Define node names (country names for example)
+const map<int, string> NODE_NAMES = {
+    {0, "USA"}, {1, "Canada"}, {2, "Belgium"}, {3, "Austria"}, {4, "Germany"}, {5, "France"}, {6, "Italy"}, {7, "Spain"}, {8, "UK"}, {9, "Portugal"}, {10, "Netherlands"}, {11, "Switzerland"}, {12, "Sweden"}};
 
 int main()
 {
@@ -33,7 +37,7 @@ int main()
         {10, 12, 8}};
 
     // Creates graph
-    Graph graph(edges, edges.size());
+    Graph graph(edges, edges.size(), NODE_NAMES);
 
     // Prints adjacency list representation of graph
     graph.printGraph();
