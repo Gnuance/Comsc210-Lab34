@@ -18,9 +18,12 @@ class Graph
 public:
     // A vector of vectors of Pairs to represent an adjacency list
     vector<vector<Pair>> adjList;
+    // Node names to apply to vertices
+    map<int, string> nodeNames;
 
     // Graph Constructor
-    Graph(vector<Edge> const &edges, int numEdges, const map<int, string>& nodeNames)
+    Graph(vector<Edge> const &edges, int numEdges, const map<int, string>& nNames)
+    : nodeNames(nNames)
     {
         // Resize the vector to hold Size elements of type vector<Edge>
         adjList.resize(numEdges);
@@ -48,9 +51,9 @@ public:
         {
             if (!adjList[i].empty())
             {
-                cout << NODE_NAMES.at(i) << "\n";
+                cout << nodeNames.at(i) << ":\n\t";
                 for (Pair v : adjList[i])
-                    cout << "(" << v.first << ", " << v.second << ") ";
+                    cout << "(" << nodeNames.at(v.first) << ": " << v.second << " Mb/s) ";
                 cout << endl;
             }
         }
