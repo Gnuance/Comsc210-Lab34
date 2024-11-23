@@ -33,7 +33,7 @@ int main()
         {10, 12, 8}};
 
     // Creates graph
-    Graph graph(edges, GetNumVertices(edges));
+    Graph graph(edges, edges.size());
 
     // Prints adjacency list representation of graph
     graph.printGraph();

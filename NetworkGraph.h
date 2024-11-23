@@ -17,10 +17,10 @@ public:
     vector<vector<Pair>> adjList;
 
     // Graph Constructor
-    Graph(vector<Edge> const &edges, int numVertices)
+    Graph(vector<Edge> const &edges, int numEdges)
     {
         // Resize the vector to hold Size elements of type vector<Edge>
-        adjList.resize(numVertices);
+        adjList.resize(numEdges);
 
         // Add edges to the directed graph
         for (auto &edge : edges)
@@ -42,10 +42,13 @@ public:
         cout << "Graph's adjacency list:" << endl;
         for (int i = 0; i < adjList.size(); i++)
         {
-            cout << i << " --> ";
-            for (Pair v : adjList[i])
-                cout << "(" << v.first << ", " << v.second << ") ";
-            cout << endl;
+            if (!adjList[i].empty())
+            {
+                cout << i << " --> ";
+                for (Pair v : adjList[i])
+                    cout << "(" << v.first << ", " << v.second << ") ";
+                cout << endl;
+            }
         }
     }
 
