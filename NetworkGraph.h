@@ -68,15 +68,16 @@ public:
         visited[start] = true;
 
         // Console output header
-        cout << "\nNetwork Layer Map (BFS)\n";
+        cout << "\nDefault Proxy Layer Map (BFS)\n";
         cout << DIVIDER;
-        int count = 0; // For output formatting
+        // int count = 0; // For output formatting
+        cout << "\nDefault\tCountries Served";
         while (!q.empty())
         {
             int node = q.front();
             q.pop();
             // cout << node << " "; // Process node (print it)
-            cout << "\nDirect Proxies For: " << nodeNames.at(node); // Process node (print it)
+            cout << "\n" << nodeNames.at(node); // Process node (print it)
 
             // Visit all the neighbors
             for (const auto &neighbor : adjList[node])
@@ -104,7 +105,7 @@ public:
         // Console output header
         cout << "\nNetwork Topology: Testing Connectivity (DFS)\n";
         cout << DIVIDER;
-        int count = 0; // For output formatting
+        // int count = 0; // For output formatting
         while (!s.empty())
         {
             int node = s.top();
@@ -114,7 +115,7 @@ public:
             {
                 visited[node] = true;
                 
-                cout << "\nAvailable Proxies For: " << nodeNames.at(node) << "\nConnecting to:"; // Process node (print it)
+                cout << "\nUndiscovered Proxies For: " << nodeNames.at(node); // Process node (print it)
 
                 // Visit all the neighbors
                 for (const auto &neighbor : adjList[node])
