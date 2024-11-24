@@ -234,6 +234,70 @@ public:
             }
         }
     }
+
+    // Prim's algorithm for MST computation
+    void primMST(int start)
+    {
+        // Priority queue to store (edge weight, vertex) pairs
+        priority_queue<Pair, vector<Pair>, greater<Pair>> pq;
+
+        // Vector to store the minimum weight edge for each vertex
+        vector<int> minWeight(adjList.size(), INT_MAX);
+
+        // Vector to keep track of visited vertices
+        vector<bool> inMST(adjList.size(), false);
+
+        // Start with the starting vertex
+        minWeight[start] = 0;
+        pq.push(make_pair(0, start)); // (weight, vertex)
+
+        // Variable to store the total weight of the MST
+        int totalWeight = 0;
+
+        cout << "\nMinimum Spanning Tree (MST) using Prim's Algorithm:\n";
+        cout << DIVIDER << endl;
+
+        // Continue until all vertices are processed
+        while (!pq.empty())
+        {
+            // Get the vertex with the smallest edge weight
+            int u = pq.top().second;
+            int weight = pq.top().first;
+            pq.pop();
+
+            // Skip if the vertex is already included in the MST
+            if (inMST[u])
+            {
+                continue;
+            }
+
+            // Include vertex u in MST
+            inMST[u] = true;
+            totalWeight += weight;
+
+            // Print the edge added to the MST
+            cout << "Edge added: " << u << " (" << nodeNames.at(u) << ") with weight " << weight << endl;
+
+            // Iterate through all neighbors of u
+            for (const auto &neighbor : adjList[u])
+            {
+                int v = neighbor.first;
+                int edgeWeight = neighbor.second;
+
+                // If vertex v is not in the MST and the edge weight is smaller than the current min weight
+                if (!inMST[v] && edgeWeight < minWeight[v])
+                {
+                    // Update the min weight for v and push it to the priority queue
+                    minWeight[v] = edgeWeight;
+                    pq.push(make_pair(edgeWeight, v));
+                }
+            }
+        }
+
+        // Print the total weight of the MST
+        cout << "Total weight of MST: " << totalWeight << endl;
+        cout << DIVIDER << endl;
+    }
 };
 
 #endif

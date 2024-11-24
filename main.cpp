@@ -51,7 +51,11 @@ int main()
     // cout << "\nBFS starting from node " << startingNode << ":" << endl;
     graph.BFS(0);
 
+    // STEP 4 -- Shortest paths through graph from node 0
     graph.printShortestPathsWithDetails(0);
+
+    // STEP 5 -- MST using Prim's Algorithm
+    graph.primMST(0);
 
     return 0;
 }
