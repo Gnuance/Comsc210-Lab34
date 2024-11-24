@@ -18,7 +18,7 @@ class Graph
 {
 public:
     // A vector of vectors of Pairs to represent an adjacency list
-    vector<vector<Pair>> adjList;
+    map<int, vector<Pair>> adjList;
     // Node names to apply to vertices
     map<int, string> nodeNames;
 
@@ -27,7 +27,7 @@ public:
         : nodeNames(nNames)
     {
         // Resize the vector to hold Size elements of type vector<Edge>
-        adjList.resize(numVertices);
+        // adjList.resize(numVertices);
 
         // Add edges to the directed graph
         for (auto &edge : edges)
