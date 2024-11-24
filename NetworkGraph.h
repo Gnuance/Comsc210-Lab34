@@ -6,6 +6,7 @@
 #include <queue>
 #include <stack>
 #include <string>
+#include <climits>
 #include "Edge.h"
 using namespace std;
 
@@ -22,8 +23,8 @@ public:
     map<int, string> nodeNames;
 
     // Graph Constructor
-    Graph(vector<Edge> const &edges, int numEdges, const map<int, string>& nNames)
-    : nodeNames(nNames)
+    Graph(vector<Edge> const &edges, int numEdges, const map<int, string> &nNames)
+        : nodeNames(nNames)
     {
         // Resize the vector to hold Size elements of type vector<Edge>
         adjList.resize(numEdges);
@@ -77,7 +78,8 @@ public:
             int node = q.front();
             q.pop();
             // cout << node << " "; // Process node (print it)
-            cout << "\n" << nodeNames.at(node); // Process node (print it)
+            cout << "\n"
+                 << nodeNames.at(node); // Process node (print it)
 
             // Visit all the neighbors
             for (const auto &neighbor : adjList[node])
@@ -88,7 +90,7 @@ public:
                     visited[neighborNode] = true;
                     q.push(neighborNode);
                     // Output formatted connections
-                        cout << "\t\t\t--> " << nodeNames.at(neighbor.first) << " (" << neighbor.second << "Mb/s)\n";
+                    cout << "\t\t\t--> " << nodeNames.at(neighbor.first) << " (" << neighbor.second << "Mb/s)\n";
                 }
             }
         }
@@ -114,7 +116,7 @@ public:
             if (!visited[node])
             {
                 visited[node] = true;
-                
+
                 cout << "\nUndiscovered Proxies For: " << nodeNames.at(node); // Process node (print it)
 
                 // Visit all the neighbors
@@ -132,6 +134,42 @@ public:
             }
         }
         cout << endl;
+    }
+
+    // Algorithm to detect shortest path through graph
+    void dijkstraShortestPath(int start, const vector<vector<Edge>> &graph, vector<int> &distances)
+    {
+        // Initialize distances to infinity
+        distances.assign(graph.size(), INT_MAX);
+        distances[start] = 0;
+
+        // Min-heap priority queue: stores pairs of (node, distance)
+        priority_queue<Edge, vector<Edge>, greater<Edge>> pq;
+        pq.push(Edge(start, 0));
+
+        while (!pq.empty())
+        {
+            int node = pq.top().node;
+            int dist = pq.top().weight;
+            pq.pop();
+
+            // If the current distance is greater than the recorded distance, skip
+            if (dist > distances[node])
+                continue;
+
+            // Visit all adjacent nodes
+            for (const Edge &edge : graph[node])
+            {
+                int newDist = dist + edge.weight;
+
+                // If the new distance is shorter, update and push to the priority queue
+                if (newDist < distances[edge.node])
+                {
+                    distances[edge.node] = newDist;
+                    pq.push(Edge(edge.node, newDist));
+                }
+            }
+        }
     }
 };
 
