@@ -45,6 +45,8 @@ int main()
     // STEP 1 -- See README
     // BFS and DFS starting from beginning node
     int startingNode = 0;
+
+    // STEP 3 -- DFS and BFS
     // Breadth first search from node 0
     graph.DFS(0);
     // Breadth first search from node 0

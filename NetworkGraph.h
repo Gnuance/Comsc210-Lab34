@@ -282,7 +282,7 @@ public:
             if (parent[u] != -1)
             {
                 cout << "Edge added: " << parent[u] << " (" << nodeNames.at(parent[u]) << ") -> " << u << " (" << nodeNames.at(u)
-                     << ") with weight " << weight << endl;
+                     << ") at " << weight << " Mb/s" << endl;
             }
 
             // Iterate through all neighbors of u
@@ -304,7 +304,6 @@ public:
 
         // Print the total weight of the MST
         cout << "Total weight of MST: " << totalWeight << endl;
-        cout << DIVIDER << endl;
     }
 };
 
