@@ -54,7 +54,7 @@ public:
             {
                 cout << nodeNames.at(i) << ":\n\t";
                 for (Pair v : adjList[i])
-                    cout << "(" << nodeNames.at(v.first) << ": " << v.second << " Mb/s) ";
+                    cout << v.first << ":" << nodeNames.at(v.first) << " (" << v.second << " Mb/s) ";
                 cout << endl;
             }
         }
@@ -78,7 +78,7 @@ public:
             int node = q.front();
             q.pop();
             // cout << node << " "; // Process node (print it)
-            cout << "\n"
+            cout << "\n" << node << ":" 
                  << nodeNames.at(node); // Process node (print it)
 
             // Visit all the neighbors
@@ -90,7 +90,7 @@ public:
                     visited[neighborNode] = true;
                     q.push(neighborNode);
                     // Output formatted connections
-                    cout << "\t\t\t--> " << nodeNames.at(neighbor.first) << " (" << neighbor.second << "Mb/s)\n";
+                    cout << "\t\t\t--> " << neighbor.first << ":" << nodeNames.at(neighbor.first) << " (" << neighbor.second << "Mb/s)\n";
                 }
             }
         }
@@ -117,7 +117,7 @@ public:
             {
                 visited[node] = true;
 
-                cout << "\nUndiscovered Proxies For: " << nodeNames.at(node); // Process node (print it)
+                cout << "\nUndiscovered Proxies For: " << node << ":" << nodeNames.at(node); // Process node (print it)
 
                 // Visit all the neighbors
                 for (const auto &neighbor : adjList[node])
@@ -127,7 +127,7 @@ public:
                     {
                         s.push(neighborNode);
                         // Output formatted connections
-                        cout << "\n\t--> " << nodeNames.at(neighbor.first) << " (" << neighbor.second << "Mb/s)";
+                        cout << "\n\t--> " << neighbor.first << ":" << nodeNames.at(neighbor.first) << " (" << neighbor.second << "Mb/s)";
                     }
                 }
                 cout << endl; // Spacing for each node loop
