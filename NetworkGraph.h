@@ -189,7 +189,7 @@ public:
         vector<int> previous;
         dijkstraShortestPath(start, distances, previous);
 
-        cout << "\nShortest Paths (min bandwidth) from " << start << " (" << nodeNames.at(start) << "):\n";
+        cout << "\nShortest Paths (min bandwidth) from " << start << ":" << nodeNames.at(start) << "\n";
         cout << DIVIDER << endl;
 
         // for (int i = 0; i < adjList.size(); ++i)
@@ -201,7 +201,7 @@ public:
             // }
             // else
             {
-                cout << start << " (" << nodeNames.at(start) << ") -> " << vertex.first << " (" << nodeNames.at(vertex.first) << ") : " << distances[vertex.first];
+                cout << start << ":" << nodeNames.at(start) << " --> " << vertex.first << ":" << nodeNames.at(vertex.first) << " : " << distances[vertex.first];
                 // printPath(previous, start, i); // Print the path
                 cout << endl;
             }
@@ -286,8 +286,8 @@ public:
             // If u is not the starting vertex, print the edge (parent -> u)
             if (parent[u] != -1)
             {
-                cout << "Edge added: " << parent[u] << " (" << nodeNames.at(parent[u]) << ") -> " << u << " (" << nodeNames.at(u)
-                     << ") at " << weight << " Mb/s" << endl;
+                cout << "Edge added: " << parent[u] << ":" << nodeNames.at(parent[u]) << " --> " << u << ":" << nodeNames.at(u)
+                     << " at " << weight << " Mb/s" << endl;
             }
 
             // Iterate through all neighbors of u
