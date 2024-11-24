@@ -23,11 +23,11 @@ public:
     map<int, string> nodeNames;
 
     // Graph Constructor
-    Graph(vector<Edge> const &edges, int numEdges, const map<int, string> &nNames)
+    Graph(vector<Edge> const &edges, int numVertices, const map<int, string> &nNames)
         : nodeNames(nNames)
     {
         // Resize the vector to hold Size elements of type vector<Edge>
-        adjList.resize(numEdges);
+        adjList.resize(numVertices);
 
         // Add edges to the directed graph
         for (auto &edge : edges)
