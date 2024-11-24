@@ -75,7 +75,8 @@ public:
         {
             int node = q.front();
             q.pop();
-            cout << node << " "; // Process node (print it)
+            // cout << node << " "; // Process node (print it)
+            cout << "\nDirect Proxies For: " << nodeNames.at(node); // Process node (print it)
 
             // Visit all the neighbors
             for (const auto &neighbor : adjList[node])
