@@ -136,14 +136,16 @@ public:
         cout << endl;
     }
 
+    // Dijkstra's algorithm & helper functions
     // Find shortest path with Dijkstra's algorithm
-    void dijkstraShortestPath(int start, vector<int> &distances)
+    void dijkstraShortestPath(int start, vector<int> &distances, vector<int> &previous)
     {
-        // Initialize distances to infinity
+        // Initialize distances to infinity and previous nodes to -1
         distances.assign(adjList.size(), INT_MAX);
+        previous.assign(adjList.size(), -1);
         distances[start] = 0;
 
-        // Min-heap priority queue: stores pairs of (node, distance)
+        // Min-heap priority queue: stores pairs of (distance, node)
         priority_queue<Pair, vector<Pair>, greater<Pair>> pq;
         pq.push(make_pair(0, start)); // Start with the source node
 
@@ -168,30 +170,66 @@ public:
                 if (newDist < distances[neighborNode])
                 {
                     distances[neighborNode] = newDist;
+                    previous[neighborNode] = currentNode; // Track the previous node
                     pq.push(make_pair(newDist, neighborNode));
                 }
             }
         }
     }
 
-    // Print the shortest paths from a given start node
-    void printShortestPaths(int start)
+    // Method to print the shortest path from start node to each node
+    void printShortestPathsWithDetails(int start)
     {
         vector<int> distances;
-        dijkstraShortestPath(start, distances);
+        vector<int> previous;
+        dijkstraShortestPath(start, distances, previous);
 
-        cout << "\nShortest Paths from " << nodeNames.at(start) << ":\n";
+        cout << "\nShortest Paths from " << start << ":\n";
         cout << DIVIDER << endl;
 
         for (int i = 0; i < adjList.size(); ++i)
         {
             if (distances[i] == INT_MAX)
             {
-                cout << nodeNames.at(i) << ": Unreachable" << endl;
+                cout << i << ": Unreachable" << endl;
             }
             else
             {
-                cout << nodeNames.at(i) << ": " << distances[i] << " Mb/s" << endl;
+                cout << start << " -> " << i << " : " << distances[i];
+                printPath(previous, start, i); // Print the path
+                cout << endl;
+            }
+        }
+    }
+
+    // Helper function to print the path from start node to a given node
+    void printPath(const vector<int> &previous, int start, int end)
+    {
+        if (end == -1)
+            return; // No path to this node
+
+        // Stack to store the path from start to end
+        stack<int> pathStack;
+
+        // Backtrack from the end node to the start node
+        int current = end;
+        while (current != start)
+        {
+            pathStack.push(current);
+            current = previous[current];
+        }
+
+        // Push the start node to the stack
+        pathStack.push(start);
+
+        // Print the path in the correct order
+        while (!pathStack.empty())
+        {
+            cout << nodeNames.at(pathStack.top());
+            pathStack.pop();
+            if (!pathStack.empty())
+            {
+                cout << " <- ";
             }
         }
     }

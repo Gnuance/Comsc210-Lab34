@@ -51,7 +51,7 @@ int main()
     // cout << "\nBFS starting from node " << startingNode << ":" << endl;
     graph.BFS(0);
 
-    graph.printShortestPaths(0);
+    graph.printShortestPathsWithDetails(0);
 
     return 0;
 }
