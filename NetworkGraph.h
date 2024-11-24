@@ -196,7 +196,7 @@ public:
             else
             {
                 cout << start << " -> " << i << " : " << distances[i];
-                printPath(previous, start, i); // Print the path
+                // printPath(previous, start, i); // Print the path
                 cout << endl;
             }
         }
@@ -225,7 +225,7 @@ public:
         // Print the path in the correct order
         while (!pathStack.empty())
         {
-            cout << nodeNames.at(pathStack.top());
+            cout << pathStack.top();
             pathStack.pop();
             if (!pathStack.empty())
             {
