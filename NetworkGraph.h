@@ -53,14 +53,20 @@ public:
             if (!adjList[i].empty())
             {
                 cout << nodeNames.at(i) << ":\n\t";
+                int count = 0;
                 for (Pair v : adjList[i])
-                    cout << v.first << ":" << nodeNames.at(v.first) << " (" << v.second << " Mb/s) ";
+                {
+                    if (count > 0)
+                        cout << " | ";
+                    cout << v.first << ":" << nodeNames.at(v.first) << " (" << v.second << " Mb/s)";
+                    count++;
+                }
                 cout << endl;
             }
         }
     }
 
-    // Breadth-First Search (BFS) -- Compliments of ChatGPT
+    // Breadth-First Search (BFS)
     void BFS(int start)
     {
         vector<bool> visited(adjList.size(), false);
@@ -78,7 +84,8 @@ public:
             int node = q.front();
             q.pop();
             // cout << node << " "; // Process node (print it)
-            cout << "\n" << node << ":" 
+            cout << "\n"
+                 << node << ":"
                  << nodeNames.at(node); // Process node (print it)
 
             // Visit all the neighbors
@@ -97,7 +104,7 @@ public:
         cout << endl;
     }
 
-    // Depth-First Search (DFS) - Iterative version (using stack) -- Compliments of ChatGPT
+    // Depth-First Search (DFS) - Iterative version (using stack)
     void DFS(int start)
     {
         vector<bool> visited(adjList.size(), false);

@@ -13,6 +13,9 @@ using namespace std;
 const map<int, string> NODE_NAMES = {
     {0, "USA"}, {1, "Canada"}, {2, "Belgium"}, {3, "Austria"}, {4, "Germany"}, {5, "France"}, {6, "Italy"}, {7, "Spain"}, {8, "UK"}, {9, "Portugal"}, {10, "Netherlands"}, {11, "Switzerland"}, {12, "Sweden"}};
 
+int main_menu();                      // outputs prompt and collects user selection
+bool isValidOption(string, int, int); // helper function to validate user input
+
 int main()
 {
     // Creates a vector of graph edges/weights
@@ -59,5 +62,76 @@ int main()
     // STEP 5 -- MST using Prim's Algorithm
     graph.primMST(0);
 
+        // prompt user for selection and input
+    // user selection 4 is the program exit code
+    do
+    {
+        userSelectedOption = main_menu();
+        switch (userSelectedOption)
+        {
+        case 1:
+            add_goat(trip, names, colors);
+            break;
+        case 2:
+            delete_goat(trip);
+            break;
+        case 3:
+            display_trip(trip);
+            break;
+        default:
+            break;
+        }
+    } while (userSelectedOption != 4);
+
+
     return 0;
+}
+
+// main menu fuction for Task 2
+int main_menu()
+{
+    string userInput = "";
+
+    do
+    {
+        // output prompt
+        cout << "*** GOAT MANAGER 3001 ***" << "\n"
+             << "[1] Add a goat" << "\n"
+             << "[2] Delete a goat" << "\n"
+             << "[3] List goats" << "\n"
+             << "[4] Quit" << "\n"
+             << "Choice --> ";
+        getline(cin, userInput); // get user input as string and test
+        cout << "\n";
+    } while (!isValidOption(userInput, 1, 4));
+
+    // if isValidOption passed, stoi(userInput) has already been tested and is safe
+    return stoi(userInput);
+}
+
+// return t/f if userInput is a valid int between min and max
+// helper function for main_menu and delete_goat
+// WARNING: stoi() will convert a double to an int or any string following an int.
+// Ex: stoi("2.9") will return 2 and so will stoi("2tGznso"), etc.
+bool isValidOption(string userInput, int minOption, int maxOption)
+{
+    int selectedOption = 0;
+    try
+    {
+        selectedOption = stoi(userInput);
+    }
+    catch (const std::exception &e)
+    {
+        cout << "Invalid input: Please enter a valid integer." << "\n\n";
+        return false;
+    }
+
+    // if userInput is an int but outside expected range
+    if (selectedOption < minOption || selectedOption > maxOption)
+    {
+        cout << "Invalid input: Please enter an integer between " << minOption << " and " << maxOption << "." << "\n\n";
+        return false;
+    }
+
+    return true;
 }
