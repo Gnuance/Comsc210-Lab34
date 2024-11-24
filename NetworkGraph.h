@@ -23,7 +23,7 @@ public:
     map<int, string> nodeNames;
 
     // Graph Constructor
-    Graph(vector<Edge> const &edges, int numVertices, const map<int, string> &nNames)
+    Graph(vector<Edge> const &edges, const map<int, string> &nNames)
         : nodeNames(nNames)
     {
         // Resize the vector to hold Size elements of type vector<Edge>
@@ -184,18 +184,19 @@ public:
         vector<int> previous;
         dijkstraShortestPath(start, distances, previous);
 
-        cout << "\nShortest Paths from " << start << ":\n";
+        cout << "\nShortest Paths from " << start << " (" << nodeNames.at(start) << "):\n";
         cout << DIVIDER << endl;
 
-        for (int i = 0; i < adjList.size(); ++i)
+        // for (int i = 0; i < adjList.size(); ++i)
+        for (const auto &vertex : adjList)
         {
-            if (distances[i] == INT_MAX)
+            if (distances[vertex.first] != INT_MAX)
+            // {
+            //     cout << vertex.first << ": Unreachable" << endl;
+            // }
+            // else
             {
-                cout << i << ": Unreachable" << endl;
-            }
-            else
-            {
-                cout << start << " -> " << i << " : " << distances[i];
+                cout << start << " -> " << vertex.first << " : " << distances[vertex.first];
                 // printPath(previous, start, i); // Print the path
                 cout << endl;
             }
