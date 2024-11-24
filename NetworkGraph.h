@@ -247,6 +247,9 @@ public:
         // Vector to keep track of visited vertices
         vector<bool> inMST(adjList.size(), false);
 
+        // Vector to keep track of the parent (source vertex) for each vertex
+        vector<int> parent(adjList.size(), -1);
+
         // Start with the starting vertex
         minWeight[start] = 0;
         pq.push(make_pair(0, start)); // (weight, vertex)
@@ -275,8 +278,12 @@ public:
             inMST[u] = true;
             totalWeight += weight;
 
-            // Print the edge added to the MST
-            cout << "Edge added: " << u << " (" << nodeNames.at(u) << ") with weight " << weight << endl;
+            // If u is not the starting vertex, print the edge (parent -> u)
+            if (parent[u] != -1)
+            {
+                cout << "Edge added: " << parent[u] << " (" << nodeNames.at(parent[u]) << ") -> " << u << " (" << nodeNames.at(u)
+                     << ") with weight " << weight << endl;
+            }
 
             // Iterate through all neighbors of u
             for (const auto &neighbor : adjList[u])
@@ -287,8 +294,9 @@ public:
                 // If vertex v is not in the MST and the edge weight is smaller than the current min weight
                 if (!inMST[v] && edgeWeight < minWeight[v])
                 {
-                    // Update the min weight for v and push it to the priority queue
+                    // Update the min weight for v and set u as its parent
                     minWeight[v] = edgeWeight;
+                    parent[v] = u; // Set u as the parent of v
                     pq.push(make_pair(edgeWeight, v));
                 }
             }
