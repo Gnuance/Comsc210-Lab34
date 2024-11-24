@@ -136,38 +136,62 @@ public:
         cout << endl;
     }
 
-    // Algorithm to detect shortest path through graph
-    void dijkstraShortestPath(int start, const vector<vector<Edge>> &graph, vector<int> &distances)
+    // Find shortest path with Dijkstra's algorithm
+    void dijkstraShortestPath(int start, vector<int> &distances)
     {
         // Initialize distances to infinity
-        distances.assign(graph.size(), INT_MAX);
+        distances.assign(adjList.size(), INT_MAX);
         distances[start] = 0;
 
         // Min-heap priority queue: stores pairs of (node, distance)
-        priority_queue<Edge, vector<Edge>, greater<Edge>> pq;
-        pq.push(Edge(start, 0));
+        priority_queue<Pair, vector<Pair>, greater<Pair>> pq;
+        pq.push(make_pair(0, start)); // Start with the source node
 
         while (!pq.empty())
         {
-            int node = pq.top().node;
-            int dist = pq.top().weight;
+            int currentNode = pq.top().second;
+            int currentDist = pq.top().first;
             pq.pop();
 
-            // If the current distance is greater than the recorded distance, skip
-            if (dist > distances[node])
+            // If the current distance is greater than the recorded distance, skip it
+            if (currentDist > distances[currentNode])
                 continue;
 
             // Visit all adjacent nodes
-            for (const Edge &edge : graph[node])
+            for (const auto &neighbor : adjList[currentNode])
             {
-                int newDist = dist + edge.weight;
+                int neighborNode = neighbor.first;
+                int edgeWeight = neighbor.second;
+                int newDist = currentDist + edgeWeight;
 
                 // If the new distance is shorter, update and push to the priority queue
-                if (newDist < distances[edge.node])
+                if (newDist < distances[neighborNode])
                 {
-                    distances[edge.node] = newDist;
-                    pq.push(Edge(edge.node, newDist));
+                    distances[neighborNode] = newDist;
+                    pq.push(make_pair(newDist, neighborNode));
                 }
+            }
+        }
+    }
+
+    // Print the shortest paths from a given start node
+    void printShortestPaths(int start)
+    {
+        vector<int> distances;
+        dijkstraShortestPath(start, distances);
+
+        cout << "\nShortest Paths from " << nodeNames.at(start) << ":\n";
+        cout << DIVIDER << endl;
+
+        for (int i = 0; i < adjList.size(); ++i)
+        {
+            if (distances[i] == INT_MAX)
+            {
+                cout << nodeNames.at(i) << ": Unreachable" << endl;
+            }
+            else
+            {
+                cout << nodeNames.at(i) << ": " << distances[i] << " Mb/s" << endl;
             }
         }
     }
