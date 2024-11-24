@@ -68,7 +68,7 @@ public:
         visited[start] = true;
 
         // Console output header
-        cout << "\nNetwork Layer Map\n";
+        cout << "\nNetwork Layer Map (BFS)\n";
         cout << DIVIDER;
         int count = 0; // For output formatting
         while (!q.empty())
@@ -102,7 +102,7 @@ public:
         s.push(start);
 
         // Console output header
-        cout << "\nNetwork Discovery: Proxy Trace\n";
+        cout << "\nNetwork Topology: Testing Connectivity (DFS)\n";
         cout << DIVIDER;
         int count = 0; // For output formatting
         while (!s.empty())
@@ -114,7 +114,7 @@ public:
             {
                 visited[node] = true;
                 
-                cout << "\nAvailable Proxies For: " << nodeNames.at(node); // Process node (print it)
+                cout << "\nAvailable Proxies For: " << nodeNames.at(node) << "\nConnecting to:"; // Process node (print it)
 
                 // Visit all the neighbors
                 for (const auto &neighbor : adjList[node])
