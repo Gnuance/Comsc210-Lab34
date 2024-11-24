@@ -67,6 +67,10 @@ public:
         q.push(start);
         visited[start] = true;
 
+        // Console output header
+        cout << "\nNetwork Layer Map\n";
+        cout << DIVIDER;
+        int count = 0; // For output formatting
         while (!q.empty())
         {
             int node = q.front();
@@ -81,6 +85,8 @@ public:
                 {
                     visited[neighborNode] = true;
                     q.push(neighborNode);
+                    // Output formatted connections
+                        cout << "\n\t--> " << nodeNames.at(neighbor.first) << " (" << neighbor.second << "Mb/s)";
                 }
             }
         }
