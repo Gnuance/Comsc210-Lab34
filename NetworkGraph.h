@@ -184,7 +184,7 @@ public:
         vector<int> previous;
         dijkstraShortestPath(start, distances, previous);
 
-        cout << "\nShortest Paths from " << start << " (" << nodeNames.at(start) << "):\n";
+        cout << "\nShortest Paths (min bandwidth) from " << start << " (" << nodeNames.at(start) << "):\n";
         cout << DIVIDER << endl;
 
         // for (int i = 0; i < adjList.size(); ++i)
@@ -196,7 +196,7 @@ public:
             // }
             // else
             {
-                cout << start << " -> " << vertex.first << " : " << distances[vertex.first];
+                cout << start << " (" << nodeNames.at(start) << ") -> " << vertex.first << " (" << nodeNames.at(vertex.first) << ") : " << distances[vertex.first];
                 // printPath(previous, start, i); // Print the path
                 cout << endl;
             }
