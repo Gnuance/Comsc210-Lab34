@@ -42,52 +42,49 @@ int main()
     // Creates graph
     Graph graph(edges, NODE_NAMES);
 
-    // Prints adjacency list representation of graph
-    graph.printGraph();
-
     // STEP 1 -- See README
     // BFS and DFS starting from beginning node
     int startingNode = 0;
 
-    // STEP 3 -- DFS and BFS
-    // Breadth first search from node 0
-    graph.DFS(0);
-    // Breadth first search from node 0
-    // cout << "\nBFS starting from node " << startingNode << ":" << endl;
-    graph.BFS(0);
-
-    // STEP 4 -- Shortest paths through graph from node 0
-    graph.printShortestPathsWithDetails(0);
-
-    // STEP 5 -- MST using Prim's Algorithm
-    graph.primMST(0);
-
-        // prompt user for selection and input
+    // prompt user for selection and input
     // user selection 4 is the program exit code
+    int userSelectedOption;
     do
     {
         userSelectedOption = main_menu();
         switch (userSelectedOption)
         {
         case 1:
-            add_goat(trip, names, colors);
+            // Prints adjacency list representation of graph
+            graph.printGraph();
             break;
         case 2:
-            delete_goat(trip);
+            // Breadth first search from node 0
+            graph.BFS(0);
             break;
         case 3:
-            display_trip(trip);
+            // Depth first search from node 0
+            graph.DFS(0);
+            break;
+        case 4:
+            // STEP 4 -- Shortest paths through graph from node 0
+            graph.printShortestPathsWithDetails(0);
+            break;
+        case 5:
+            // STEP 5 -- MST using Prim's Algorithm
+            graph.primMST(0);
             break;
         default:
             break;
         }
-    } while (userSelectedOption != 4);
+    } while (userSelectedOption != 0);
 
+    cout << "Thank you for using the network graph tool" << endl;
 
     return 0;
 }
 
-// main menu fuction for Task 2
+// main menu fuction for STEP 6
 int main_menu()
 {
     string userInput = "";
@@ -95,15 +92,17 @@ int main_menu()
     do
     {
         // output prompt
-        cout << "*** GOAT MANAGER 3001 ***" << "\n"
-             << "[1] Add a goat" << "\n"
-             << "[2] Delete a goat" << "\n"
-             << "[3] List goats" << "\n"
-             << "[4] Quit" << "\n"
+        cout << "VPN: Network Menu" << "\n"
+             << "[1] Display Bandwidth Summary" << "\n"
+             << "[2] Default Proxy Map [BFS]" << "\n"
+             << "[3] Test Network Nodes [DFS]" << "\n"
+             << "[4] Display Minimum Bandwidth From Source" << "\n"
+             << "[5] MST: Minimum Spanning Tree For Network" << "\n"
+             << "[0] Quit" << "\n"
              << "Choice --> ";
         getline(cin, userInput); // get user input as string and test
-        cout << "\n";
-    } while (!isValidOption(userInput, 1, 4));
+        cout << endl;
+    } while (!isValidOption(userInput, 0, 5));
 
     // if isValidOption passed, stoi(userInput) has already been tested and is safe
     return stoi(userInput);
