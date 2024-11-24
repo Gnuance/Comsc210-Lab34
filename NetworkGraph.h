@@ -78,15 +78,13 @@ public:
         cout << "\nDefault Proxy Layer Map (BFS)\n";
         cout << DIVIDER;
         // int count = 0; // For output formatting
-        cout << "\nDefault Proxy\t\tCountries Served";
+        cout << "\nDefault Proxy\n\tCountries Served\n";
         while (!q.empty())
         {
             int node = q.front();
             q.pop();
             // cout << node << " "; // Process node (print it)
-            cout << "\n"
-                 << node << ":"
-                 << nodeNames.at(node); // Process node (print it)
+            cout << "\n" << node << ":" << nodeNames.at(node); // Process node (print it)
 
             // Visit all the neighbors
             for (const auto &neighbor : adjList[node])
@@ -97,7 +95,7 @@ public:
                     visited[neighborNode] = true;
                     q.push(neighborNode);
                     // Output formatted connections
-                    cout << "\t\t\t--> " << neighbor.first << ":" << nodeNames.at(neighbor.first) << " (" << neighbor.second << "Mb/s)\n";
+                    cout << "\n\t--> " << neighbor.first << ":" << nodeNames.at(neighbor.first) << " (" << neighbor.second << "Mb/s)";
                 }
             }
         }
@@ -124,7 +122,7 @@ public:
             {
                 visited[node] = true;
 
-                cout << "\nUndiscovered Proxies For: " << node << ":" << nodeNames.at(node); // Process node (print it)
+                cout << "\nDiscovered Proxies For: " << node << ":" << nodeNames.at(node); // Process node (print it)
 
                 // Visit all the neighbors
                 for (const auto &neighbor : adjList[node])

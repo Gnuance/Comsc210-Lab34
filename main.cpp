@@ -60,19 +60,19 @@ int main()
             break;
         case 2:
             // Breadth first search from node 0
-            graph.BFS(0);
+            graph.BFS(startingNode);
             break;
         case 3:
             // Depth first search from node 0
-            graph.DFS(0);
+            graph.DFS(startingNode);
             break;
         case 4:
             // STEP 4 -- Shortest paths through graph from node 0
-            graph.printShortestPathsWithDetails(0);
+            graph.printShortestPathsWithDetails(startingNode);
             break;
         case 5:
             // STEP 5 -- MST using Prim's Algorithm
-            graph.primMST(0);
+            graph.primMST(startingNode);
             break;
         default:
             break;
@@ -92,7 +92,7 @@ int main_menu()
     do
     {
         // output prompt
-        cout << "VPN: Network Menu" << "\n"
+        cout << "\nVPN: Network Menu" << "\n"
              << "[1] Display Bandwidth Summary" << "\n"
              << "[2] Default Proxy Map [BFS]" << "\n"
              << "[3] Test Network Nodes [DFS]" << "\n"
